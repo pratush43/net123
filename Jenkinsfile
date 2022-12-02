@@ -3,8 +3,6 @@ pipeline {
     registry = "pratush43/dock"
     registryCredential = 'dockerhub'
     image = ''
-    FULL_PATH_BRANCH = "${sh(script:'git name-rev --name-only HEAD', returnStdout: true)}"
-    GIT_BRANCH = FULL_PATH_BRANCH.substring(FULL_PATH_BRANCH.lastIndexOf('/') + 1, FULL_PATH_BRANCH.length())
   }
 
   
@@ -20,7 +18,7 @@ pipeline {
            
               
               
-sh 'echo $GIT_BRANCH'
+ echo "$env.CHANGE_BRANCH"'
 
                
             
