@@ -3,6 +3,7 @@ pipeline {
     registry = "pratush43/dock"
     registryCredential = 'dockerhub'
     image = ''
+    GIT_BRANCH_V = ''
   }
 
   
