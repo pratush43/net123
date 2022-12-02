@@ -4,9 +4,8 @@ pipeline {
     registryCredential = 'dockerhub'
     image = ''
   }
-  def BranchName(){
-    return $env.GIT_BRANCH
-  }
+
+  
   agent none
     stages {
         stage('Build') {
@@ -16,7 +15,10 @@ pipeline {
     } 
   }
             steps {
-           echo BranchName()
+           
+            BRANCH_NAME = "${GIT_BRANCH.split('/').size() > 1 ? GIT_BRANCH.split('/')[1..-1].join('/') : GIT_BRANCH}"
+echo $BRANCH_NAME
+
                 sh 'dotnet build'
               sh ' ls -lrt && pwd'
               archiveArtifacts artifacts: 'bin/Debug/net6.0/*.dll'
