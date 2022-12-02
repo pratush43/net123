@@ -2,7 +2,8 @@ pipeline {
   environment {
     registry = "pratush43/dock"
     registryCredential = 'dockerhub'
-    image = '' 
+    image = ''
+    BRANCH_NAME = "${GIT_BRANCH.split('/').size() > 1 ? GIT_BRANCH.split('/')[1..-1].join('/') : GIT_BRANCH}"
   }
   agent none
     stages {
@@ -13,6 +14,7 @@ pipeline {
     } 
   }
             steps {
+           echo "$BRNACH_NAME"
                 sh 'dotnet build'
               sh ' ls -lrt && pwd'
               archiveArtifacts artifacts: 'bin/Debug/net6.0/*.dll'
