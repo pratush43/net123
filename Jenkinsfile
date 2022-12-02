@@ -3,7 +3,7 @@ pipeline {
     registry = "pratush43/dock"
     registryCredential = 'dockerhub'
     image = ''
-    GIT_BRANCH_V = ''
+    BRANCH_NAME = "${GIT_BRANCH}"
   }
 
   
@@ -18,8 +18,8 @@ pipeline {
             steps {
            
               script {
-                GIT_BRANCH_V = env.GIT_BRANCH
-sh 'echo $GIT_BRANCH_V'
+              
+sh 'echo $BRANCH_NAME'
 
                
             }
