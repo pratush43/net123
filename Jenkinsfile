@@ -23,6 +23,7 @@ pipeline {
            agent any
       steps{
         script {
+          echo "$env.GIT_BRANCH"
           unstash 'build'
          def dockerImage = docker.build registry + ":$BUILD_NUMBER"
           docker.withRegistry( '', registryCredential ) {
