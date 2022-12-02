@@ -3,7 +3,7 @@ pipeline {
     registry = "pratush43/dock"
     registryCredential = 'dockerhub'
     image = ''
-    BRANCH_NAME = "$env.GIT_BRANCH"
+    BRANCH_NAME = scm.branches[0].name
   }
   agent none
     stages {
