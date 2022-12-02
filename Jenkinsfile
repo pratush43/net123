@@ -17,7 +17,8 @@ pipeline {
             steps {
            
               script {
-sh 'echo "${GIT_BRANCH.split('/').size() > 1 ? GIT_BRANCH.split('/')[1..-1].join('/') : GIT_BRANCH}"'
+                GIT_BRANCH_V = ${GIT_BRANCH.split('/').size() > 1 ? GIT_BRANCH.split('/')[1..-1].join('/') : GIT_BRANCH}
+sh 'echo $GIT_BRANCH_V'
 
                 sh 'dotnet build'
               sh ' ls -lrt && pwd'
