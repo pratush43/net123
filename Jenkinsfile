@@ -17,12 +17,12 @@ pipeline {
   }
             steps {
            
-              script {
+              
               
 sh 'echo $BRANCH_NAME'
 
                
-            }
+            
             }
         }
         stage("docker image"){
