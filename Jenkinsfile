@@ -13,7 +13,7 @@ pipeline {
     } 
   }
             steps {
-           echo "$scm.branches[0].name"
+           echo $scm.branches[0].name
                 sh 'dotnet build'
               sh ' ls -lrt && pwd'
               archiveArtifacts artifacts: 'bin/Debug/net6.0/*.dll'
