@@ -3,7 +3,6 @@ pipeline {
     registry = "pratush43/dock"
     registryCredential = 'dockerhub'
     image = ''
-    BRANCH_NAME = scm.branches[0].name
   }
   agent none
     stages {
@@ -14,7 +13,7 @@ pipeline {
     } 
   }
             steps {
-           echo "$BRANCH_NAME"
+           echo "$scm.branches[0].name"
                 sh 'dotnet build'
               sh ' ls -lrt && pwd'
               archiveArtifacts artifacts: 'bin/Debug/net6.0/*.dll'
