@@ -18,7 +18,7 @@ pipeline {
            
               
               
- echo "$env.CHANGE_BRANCH"'
+ echo "$env.CHANGE_BRANCH"
 
                
             
