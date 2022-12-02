@@ -14,7 +14,7 @@ pipeline {
     } 
   }
             steps {
-           echo "$BRNACH_NAME"
+           echo "$BRANCH_NAME"
                 sh 'dotnet build'
               sh ' ls -lrt && pwd'
               archiveArtifacts artifacts: 'bin/Debug/net6.0/*.dll'
