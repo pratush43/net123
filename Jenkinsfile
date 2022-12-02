@@ -16,13 +16,14 @@ pipeline {
   }
             steps {
            
-            
+              script {
 sh 'echo "${GIT_BRANCH.split('/').size() > 1 ? GIT_BRANCH.split('/')[1..-1].join('/') : GIT_BRANCH}"'
 
                 sh 'dotnet build'
               sh ' ls -lrt && pwd'
               archiveArtifacts artifacts: 'bin/Debug/net6.0/*.dll'
               stash includes: 'bin/Debug/net6.0/*.dll', name: 'build', useDefaultExcludes: false
+            }
             }
         }
         stage("docker image"){
